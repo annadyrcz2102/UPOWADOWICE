@@ -16,7 +16,7 @@ public class Timer : MonoBehaviour , IPointerClickHandler
 
     public int Duration;
 
-    private int remainingDuration;
+    private float remainingDuration;
 
     private bool Pause;
 
@@ -25,7 +25,7 @@ public class Timer : MonoBehaviour , IPointerClickHandler
         Begin(Duration);
     }
 
-    private void Begin(int second)
+    private void Begin(float second)
     {
         remainingDuration = second;
         StartCoroutine(UpdateTimer());
@@ -39,8 +39,8 @@ public class Timer : MonoBehaviour , IPointerClickHandler
             {
                 uiText.text = $"{remainingDuration % 60:00}";
                 uiFill.fillAmount = Mathf.InverseLerp(0, Duration, remainingDuration);
-                remainingDuration--;
-                yield return new WaitForSeconds(1f);
+                remainingDuration -= 0.01f;
+                yield return new WaitForSeconds(0.01f);
             }
             yield return null;
         }
