@@ -313,6 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 0}
+  CheckPointPosition: {fileID: 0}
 --- !u!58 &144655749
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -397,6 +398,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &226158640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 226158641}
+  m_Layer: 0
+  m_Name: CheckpointPos
+  m_TagString: CheckPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &226158641
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226158640}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.25, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &461561298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7931497952322818869, guid: c25fa1eeb95526841b1c842461b473d5, type: 3}
+  m_PrefabInstance: {fileID: 2816977185836682567}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &577299863
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,6 +801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 0}
+  CheckPointPosition: {fileID: 0}
 --- !u!1 &1260947669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1563,6 +1601,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7931497952322818856, guid: c25fa1eeb95526841b1c842461b473d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8109633338435060598, guid: c25fa1eeb95526841b1c842461b473d5, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1785,5 +1827,9 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8703523218566453425, guid: 92c356b219401a044939a0788c5b0c56, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 461561298}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92c356b219401a044939a0788c5b0c56, type: 3}
