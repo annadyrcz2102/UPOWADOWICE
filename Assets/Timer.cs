@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour , IPointerClickHandler
     [SerializeField] private Image uiFill;
     [SerializeField] private Text uiText;
 
-    public int Duration;
+    public int Duration = 15;
 
     private float remainingDuration;
 
@@ -23,34 +23,41 @@ public class Timer : MonoBehaviour , IPointerClickHandler
 
     private void Start()
     {
-        Begin(Duration);
+        remainingDuration = Duration;
+        Pause = false;
     }
 
-    private void Begin(float second)
-    {
-        remainingDuration = second;
-        StartCoroutine(UpdateTimer());
-    }
 
-    private bool isTimerRunning = false;
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (IsSave)
         {
-            StopCoroutine(UpdateTimer());
-            if(remainingDuration < 15)
-            {
-                remainingDuration += 0.01f;
-                uiText.text = $"{remainingDuration % 60:00}";
-                uiFill.fillAmount = Mathf.InverseLerp(0, Duration, remainingDuration);
-            }
-            isTimerRunning = false;
+
+                if (!Pause && remainingDuration >= 0 && remainingDuration < 15)
+                {
+                    uiText.text = $"{remainingDuration % 60:00}";
+                   uiFill.fillAmount = Mathf.InverseLerp(0, Duration, remainingDuration);
+                    remainingDuration += 1f * Time.deltaTime;
+                   Debug.Log("Safe");
+                }
+
+
+
         }
-        else if (!isTimerRunning)
+        else
         {
-            StartCoroutine(UpdateTimer());
-            isTimerRunning = true;
+
+                if (!Pause && remainingDuration >= 0)
+                {
+                    uiText.text = $"{remainingDuration % 60:00}";
+                    uiFill.fillAmount = Mathf.InverseLerp(0, Duration, remainingDuration);
+                    remainingDuration -= 1f * Time.deltaTime;
+                    Debug.Log("NotSafe");
+                }
+            
+            OnEnd();
+
         }
     }
 
@@ -73,6 +80,6 @@ public class Timer : MonoBehaviour , IPointerClickHandler
 
     private void OnEnd()
     {
-        Debug.Log("End");
+
     }
 }
