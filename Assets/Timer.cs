@@ -19,6 +19,7 @@ public class Timer : MonoBehaviour , IPointerClickHandler
     private float remainingDuration;
 
     private bool Pause;
+    public bool IsSave;
 
     private void Start()
     {
@@ -29,6 +30,28 @@ public class Timer : MonoBehaviour , IPointerClickHandler
     {
         remainingDuration = second;
         StartCoroutine(UpdateTimer());
+    }
+
+    private bool isTimerRunning = false;
+
+    private void Update()
+    {
+        if (IsSave)
+        {
+            StopCoroutine(UpdateTimer());
+            if(remainingDuration < 15)
+            {
+                remainingDuration += 0.01f;
+                uiText.text = $"{remainingDuration % 60:00}";
+                uiFill.fillAmount = Mathf.InverseLerp(0, Duration, remainingDuration);
+            }
+            isTimerRunning = false;
+        }
+        else if (!isTimerRunning)
+        {
+            StartCoroutine(UpdateTimer());
+            isTimerRunning = true;
+        }
     }
 
     private IEnumerator UpdateTimer()
@@ -46,6 +69,7 @@ public class Timer : MonoBehaviour , IPointerClickHandler
         }
         OnEnd();
     }
+
 
     private void OnEnd()
     {

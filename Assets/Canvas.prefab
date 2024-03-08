@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 8703523218566453425}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Timer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,6 +195,7 @@ MonoBehaviour:
   uiFill: {fileID: 8133614830185912769}
   uiText: {fileID: 7324373898211048973}
   Duration: 15
+  IsSave: 0
 --- !u!1 &6818265589430770321
 GameObject:
   m_ObjectHideFlags: 0
