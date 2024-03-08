@@ -8,6 +8,7 @@ TagManager:
   - Timer
   - ChckPoint
   - CheckPoint
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -34,8 +35,8 @@ TagManager:
   - Enemy
   - 
   - 
-  - 
-  - 
+  - PlayerBullet
+  - Player
   - 
   - 
   - 
