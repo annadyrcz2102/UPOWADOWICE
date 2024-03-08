@@ -47,7 +47,7 @@ public class Timer : MonoBehaviour , IPointerClickHandler
         {
 
                 if (!Pause && remainingDuration >= 0 && remainingDuration < 15 || !Pause &&  remainingDuration <= 0 && remainingDuration < 15)
-            {
+                {
                     uiText.text = $"{remainingDuration % 60:00}";
                    uiFill.fillAmount = Mathf.InverseLerp(0, Duration, remainingDuration);
                     remainingDuration += 1f * Time.deltaTime;

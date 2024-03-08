@@ -24,15 +24,15 @@ TagManager:
   - 
   - 
   - 
+  - wall
   - 
   - 
   - 
   - 
+  - Player
   - 
   - 
-  - 
-  - 
-  - 
+  - Enemy
   - 
   - 
   - PlayerBullet
