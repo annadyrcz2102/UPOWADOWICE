@@ -21,65 +21,52 @@ public class Timer : MonoBehaviour , IPointerClickHandler
     private bool Pause;
     public bool IsSave;
 
+    public GameObject player;
+    public GameObject CheckPointPosition;
+
+
     private void Start()
     {
         remainingDuration = Duration;
         Pause = false;
+        CheckPointPosition = GameObject.FindGameObjectWithTag("CheckPoint");
     }
 
-
+    private void Update()
+    {
+        if(remainingDuration <= 0)
+        {
+            OnEnd();
+            remainingDuration = Duration;
+        }
+    }
 
     private void FixedUpdate()
     {
         if (IsSave)
         {
 
-                if (!Pause && remainingDuration >= 0 && remainingDuration < 15)
-                {
+                if (!Pause && remainingDuration >= 0 && remainingDuration < 15 || !Pause &&  remainingDuration <= 0 && remainingDuration < 15)
+            {
                     uiText.text = $"{remainingDuration % 60:00}";
                    uiFill.fillAmount = Mathf.InverseLerp(0, Duration, remainingDuration);
                     remainingDuration += 1f * Time.deltaTime;
-                   Debug.Log("Safe");
                 }
-
-
-
         }
         else
         {
-
                 if (!Pause && remainingDuration >= 0)
                 {
                     uiText.text = $"{remainingDuration % 60:00}";
                     uiFill.fillAmount = Mathf.InverseLerp(0, Duration, remainingDuration);
                     remainingDuration -= 1f * Time.deltaTime;
-                    Debug.Log("NotSafe");
                 }
-            
-            OnEnd();
-
         }
-    }
-
-    private IEnumerator UpdateTimer()
-    {
-        while (remainingDuration >= 0)
-        {
-            if (!Pause)
-            {
-                uiText.text = $"{remainingDuration % 60:00}";
-                uiFill.fillAmount = Mathf.InverseLerp(0, Duration, remainingDuration);
-                remainingDuration -= 0.01f;
-                yield return new WaitForSeconds(0.01f);
-            }
-            yield return null;
-        }
-        OnEnd();
     }
 
 
     private void OnEnd()
     {
-
+        player.transform.position = CheckPointPosition.transform.position;
     }
 }

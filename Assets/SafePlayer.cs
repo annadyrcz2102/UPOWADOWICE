@@ -5,11 +5,13 @@ using UnityEngine;
 public class SafePlayer : MonoBehaviour
 {
     public GameObject timer;
+    public GameObject CheckPointPosition;
 
 
     private void Start()
     {
         timer = GameObject.FindGameObjectWithTag("Timer");
+        CheckPointPosition = GameObject.FindGameObjectWithTag("CheckPoint");
     }
 
 
@@ -18,6 +20,7 @@ public class SafePlayer : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
            timer.GetComponent<Timer>().IsSave = true;
+           CheckPointPosition.transform.position = transform.position;
         }
     }
 
